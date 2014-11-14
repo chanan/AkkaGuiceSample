@@ -6,7 +6,7 @@ import play.Application;
 import play.GlobalSettings;
 
 public class Global extends GlobalSettings {
-    private Injector injector = Guice.createInjector(new AkkaGuiceModule("actors"), new GuiceModule());
+    private Injector injector;
 
     @Override
     public <A> A getControllerInstance(Class<A> aClass) throws Exception {
@@ -15,6 +15,7 @@ public class Global extends GlobalSettings {
 
     @Override
     public void onStart(Application application) {
-        AkkaGuice.InitializeInjector(injector, "actors");
+        injector = Guice.createInjector(new AkkaGuiceModule(), new GuiceModule());
+        AkkaGuice.InitializeInjector(injector);
     }
 }

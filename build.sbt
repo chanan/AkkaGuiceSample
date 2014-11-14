@@ -15,5 +15,5 @@ libraryDependencies ++= Seq(
   javaEbean,
   cache,
   javaWs,
-  "akkaguice" %% "akkaguice" % "0.8.2-SNAPSHOT"
+  "akkaguice" %% "akkaguice" % "0.8.3-SNAPSHOT" exclude ("org.reflections", "reflections")
 )
